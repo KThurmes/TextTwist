@@ -1,28 +1,29 @@
 /********************************************************************* 
 ** Author: Kathleen A Thurmes
-** Date: 
-** Description: Ultimate goal: To re-create the game Text Twist (?)
-But for now, I'm just trying to read a dictionary in a text file 
-into an array :-)
+** Date: 8.22.19
+** Description: Currently, this is a driver for testing the TextTwist game.
 *********************************************************************/  
 
-//Create an app that will take a word (or series of letters) and find all the words in the dictionary file that can be made from those letters.
-    //Create a program that will take a base word and will return all the words that can be made from the letters of the base word
-        //Create a way to read all the words from a dictionary .txt file into an array
-
-
-#include "BaseWord.hpp"
+#include "Game.hpp"
 #include <string>
 #include <fstream>
 #include <iostream>
-#include "Dictionary.hpp"
+//#include "Dictionary.hpp"
+//#include "BaseWord.hpp"
 
-using std::string;
-using std::ifstream;
+//using std::string;
+//using std::ifstream;
 
 void readDict();
 
 int main(){
-    Dictionary dict;
+    string littleWords[] = {"at", "a", "tab"};
+    BaseWord firstBaseWord = BaseWord("bat", littleWords, 3);
+    Level level1 = Level(firstBaseWord);
+    Game game1;
+    game1.setLevel(level1);
+    game1.play();
+    //firstBaseWord.printBaseWord();
+    //firstBaseWord.printSmallerWords();
     return 0;
 }

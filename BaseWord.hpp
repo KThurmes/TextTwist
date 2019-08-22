@@ -1,25 +1,31 @@
 /********************************************************************* 
 ** Author: Kathleen A Thurmes
-** Date: 
-** Description: I'm getting ahead of myself by including this. 
-Eventually, I will want to find all the words that can be made from 
-the letters of a base word, but that's further down the line.
+** Date: 8.22.19
+** Description: A class that will contain a base word and the list of smaller words that can be made from the letters of the base word.
 *********************************************************************/ 
 
 #ifndef BASEWORD_HPP
 #define BASEWORD_HPP
 
 #include <string>
+using std::string;
 
 class BaseWord{
 
     private:
-        std::string word;
-        char letters[];
-
+        string baseWord;
+        string smallerWords[100]; //An array of all the smaller words that can be made from the letters of the baseWord.
+        //int idNumber = 0; //This will later be used to keep track of which baseWords have been used in the game
+        int numSmallerWords;
+        
     public:
         BaseWord();
-        
+        BaseWord(string, string[], int); //A temporary constructor to use with testing
+        bool isBaseWord(string guess); //this will check if guess is the baseWord or not
+        bool isInList(string guess); //this will check if guess is in the smallerWords list or not.
+        int getNumSmallerWords(); //This will return the number of smaller words in the smallerWords list.
+        void printBaseWord();
+        void printSmallerWords();
 };
 
 #endif

@@ -57,3 +57,5 @@ void Dictionary::readDict(){
     inputDict.close();
 
 }
+
+
