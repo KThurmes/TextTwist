@@ -29,7 +29,6 @@ class Level{
         Level();
         Level(BaseWord);
         BaseWord getBaseWord();
-        //void endLevel(); //Ends a level
         void playLevel();
 
 };

@@ -58,6 +58,10 @@ void Level::playLevel(){
 
     string currentGuess;
 
+    string jumbledWord = baseWord.jumble();
+
+    cout << "Jumbled: " << jumbledWord << endl;
+
     while (!levelOver){
 
         currentGuess = getGuess();

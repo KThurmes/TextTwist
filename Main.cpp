@@ -18,7 +18,7 @@ void readDict();
 
 int main(){
     string littleWords[] = {"at", "a", "tab"};
-    BaseWord firstBaseWord = BaseWord("bat", littleWords, 3);
+    BaseWord firstBaseWord = BaseWord("bang", littleWords, 3);
     Level level1 = Level(firstBaseWord);
     Game game1;
     game1.setLevel(level1);

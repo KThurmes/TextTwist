@@ -1,6 +1,7 @@
 #include "BaseWord.hpp"
-#include<string>
-#include<iostream>
+#include <string>
+#include <iostream>
+#include <cstdlib>
 
 using std::cout;
 using std::endl;
@@ -59,5 +60,38 @@ void BaseWord::printSmallerWords(){
     for (int i = 0; i < numSmallerWords ; i++){
         cout << smallerWords[i] << endl;
     }
+}
+
+string BaseWord::jumble(){
+
+    int baseWordLength = baseWord.length();
+    char jumbled[baseWordLength+1];
+    int usedPlaces[baseWordLength];
+    int indexInJumbled;
+    
+
+//Need to make sure we're not repeating locations
+    for (int i = 0; i < baseWordLength; i++){
+
+        bool alreadyInUse;
+
+        do{
+            alreadyInUse = false;
+            indexInJumbled = rand() % baseWordLength;
+            for (int j = 0; j < i; j++){
+                if (usedPlaces[j] == indexInJumbled){
+                    alreadyInUse == true;
+                }
+            }
+        }
+        while (alreadyInUse == true);
+
+        jumbled[indexInJumbled] = baseWord.c_str()[i];
+        usedPlaces[i] = indexInJumbled;
+        cout << "index " << i << ": " << baseWord.c_str()[i] <<endl;
+        cout << "destingation index: " << indexInJumbled <<endl;
+    }
+
+    return jumbled;
 }
 

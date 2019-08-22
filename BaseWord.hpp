@@ -27,6 +27,7 @@ class BaseWord{
         void printBaseWord();
         void printSmallerWords();
         string getWord();
+        string jumble(); //This will retrun baseWrd with its letters all jumbled up.
 };
 
 #endif
