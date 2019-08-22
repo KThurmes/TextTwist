@@ -16,13 +16,12 @@ class Level{
     private:
         BaseWord baseWord;
         //Timer
-        string guesses[]; //This will be used to keep track of what words the user has already guessed.
+        string guesses[100]; //This will be used to keep track of what words the user has already guessed.
         int remainingWords; //This will keep track of the number of smaller words the user has left to guess
         bool levelOver;
+        int numGuesses; //The running total of guesses the player has made in this level
 
         bool alreadyGuessed(string guess); //Check to see if a string is already in guesses array
-        bool isBaseWord(string guess); //Check to see if a string matches baseWord
-        bool checkGuess(string guess); //Check to see if a string is in the BaseWord's list of smallerWords
         void addToGuesses(string guess); //Add a string to the guesses array
         string getGuess(); //This will receive the user's guess and check it
 
