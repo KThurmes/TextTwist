@@ -22,11 +22,6 @@ bool Level::alreadyGuessed(string guess){
     return false;
 }
 
-//Check to see if a string matches baseWord
-bool Level::isBaseWord(string guess){
-    return false;
-}
-
 //Check to see if a string is in the BaseWord's list of smallerWords
 bool Level::checkGuess(string guess){
     return false;
@@ -64,11 +59,11 @@ void Level::playLevel(){
         if (alreadyGuessed(currentGuess)){
             cout << "Already guessed!" << endl;
         }
-        else if (isBaseWord(currentGuess)){
+        else if (baseWord.isBaseWord(currentGuess)){
             cout << "That's the base word!" << endl;
             levelOver = true;
         }
-        else if (checkGuess(currentGuess)){
+        else if (baseWord.isInList(currentGuess)){
             cout << "It's in the list!" << endl;
         }
         else{

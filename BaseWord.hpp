@@ -26,6 +26,7 @@ class BaseWord{
         int getNumSmallerWords(); //This will return the number of smaller words in the smallerWords list.
         void printBaseWord();
         void printSmallerWords();
+        string getWord();
 };
 
 #endif
