@@ -73,39 +73,50 @@ void BaseWord::printSmallerWords()
     }
 }
 
+/********************************************************************* 
+** Description: This is a helper function used by jumble to deterine 
+if an int (key) is in an array of ints (arr).
+*********************************************************************/
+bool BaseWord::inArray(int arr[], int arrLen, int key)
+{
+    bool isInArray = false;
+    for (int i = 0; i < arrLen; i++)
+    {
+        if (arr[i] == key)
+        {
+            //return true if any of the ints in arr == key
+            return true;
+        }
+    }
+    return false;
+}
+
 string BaseWord::jumble()
 {
 
     int baseWordLength = baseWord.length();
-    char jumbled[100];
-    int usedPlaces[100];
+    char jumbled[30]; //Won't work for a base word longer than 29 characters.
+    int usedPlaces[30] = {100};
     int indexInJumbled;
+    bool alreadyInUse;
 
     //Need to make sure we're not repeating locations
     for (int i = 0; i < baseWordLength; i++)
     {
 
-        bool alreadyInUse;
-
         do
         {
             alreadyInUse = false;
-            indexInJumbled = rand() % baseWordLength;
-            for (int j = 0; j <= i; j++)
+            indexInJumbled = rand() % baseWordLength; //#TODO: must use different random function. This one returns the same thing every time.
+            if (inArray(usedPlaces, i, indexInJumbled))
             {
-                cout << "usedPlaces[j]: " << usedPlaces[j] << endl;
-                cout << "indexInJumbled: " << indexInJumbled << endl;
-                if (usedPlaces[j] == indexInJumbled)
-                {
-                    alreadyInUse == true;
-                }
+                alreadyInUse = true;
             }
+
         } while (alreadyInUse == true);
 
         jumbled[indexInJumbled] = baseWord.c_str()[i];
         usedPlaces[i] = indexInJumbled;
-        cout << "index " << i << ": " << baseWord.c_str()[i] << endl;
-        cout << "destingation index: " << indexInJumbled << endl;
     }
 
     return jumbled;

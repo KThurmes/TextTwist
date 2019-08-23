@@ -2,7 +2,7 @@
 ** Author: Kathleen A Thurmes
 ** Date: 8.22.19
 ** Description: Currently, this is a driver for testing the TextTwist game.
-*********************************************************************/  
+*********************************************************************/
 
 #include "Game.hpp"
 #include <string>
@@ -16,9 +16,10 @@
 
 void readDict();
 
-int main(){
+int main()
+{
     string littleWords[] = {"at", "a", "tab"};
-    BaseWord firstBaseWord = BaseWord("bang", littleWords, 3);
+    BaseWord firstBaseWord = BaseWord("atmosphere", littleWords, 3);
     Level level1 = Level(firstBaseWord);
     Game game1;
     game1.setLevel(level1);
