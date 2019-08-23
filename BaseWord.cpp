@@ -7,35 +7,41 @@ using std::cout;
 using std::endl;
 using std::string;
 
-BaseWord::BaseWord(){
-
+BaseWord::BaseWord()
+{
 }
 
-BaseWord::BaseWord(string word, string smallWords[], int numSmallWords){
+BaseWord::BaseWord(string word, string smallWords[], int numSmallWords)
+{
     baseWord = word;
     numSmallerWords = numSmallWords;
-    
-    for(int i = 0; i < numSmallWords; i++){
+
+    for (int i = 0; i < numSmallWords; i++)
+    {
         smallerWords[i] = smallWords[i];
     }
 }
 
 //this will return true if guess is the baseWord
-bool BaseWord::isBaseWord(string guess){
+bool BaseWord::isBaseWord(string guess)
+{
 
     //Use built-in string comparator
     bool resultOfComparison = !(guess.compare(baseWord));
     return resultOfComparison;
-} 
+}
 
 //this will return true if guess is in the smallerWords list.
-bool BaseWord::isInList(string guess){
+bool BaseWord::isInList(string guess)
+{
     bool resultOfComparison;
 
     //Use built-in comparator on all strings in smallerWords array
-    for (int i = 0; i < numSmallerWords; i++){
+    for (int i = 0; i < numSmallerWords; i++)
+    {
         resultOfComparison = !(guess.compare(smallerWords[i]));
-        if (resultOfComparison){
+        if (resultOfComparison)
+        {
             return true;
         }
     }
@@ -43,55 +49,64 @@ bool BaseWord::isInList(string guess){
 }
 
 //This will return the number of smaller words in the smallerWords list.
-int BaseWord::getNumSmallerWords(){
+int BaseWord::getNumSmallerWords()
+{
     return numSmallerWords;
-} 
+}
 
-string BaseWord::getWord(){
+string BaseWord::getWord()
+{
     return baseWord;
 }
 
-void BaseWord::printBaseWord(){
+void BaseWord::printBaseWord()
+{
     cout << "BaseWord: " << baseWord << endl;
 }
 
-void BaseWord::printSmallerWords(){
+void BaseWord::printSmallerWords()
+{
     cout << "Smaller Words: " << endl;
-    for (int i = 0; i < numSmallerWords ; i++){
+    for (int i = 0; i < numSmallerWords; i++)
+    {
         cout << smallerWords[i] << endl;
     }
 }
 
-string BaseWord::jumble(){
+string BaseWord::jumble()
+{
 
     int baseWordLength = baseWord.length();
-    char jumbled[baseWordLength+1];
-    int usedPlaces[baseWordLength];
+    char jumbled[100];
+    int usedPlaces[100];
     int indexInJumbled;
-    
 
-//Need to make sure we're not repeating locations
-    for (int i = 0; i < baseWordLength; i++){
+    //Need to make sure we're not repeating locations
+    for (int i = 0; i < baseWordLength; i++)
+    {
 
         bool alreadyInUse;
 
-        do{
+        do
+        {
             alreadyInUse = false;
             indexInJumbled = rand() % baseWordLength;
-            for (int j = 0; j < i; j++){
-                if (usedPlaces[j] == indexInJumbled){
+            for (int j = 0; j <= i; j++)
+            {
+                cout << "usedPlaces[j]: " << usedPlaces[j] << endl;
+                cout << "indexInJumbled: " << indexInJumbled << endl;
+                if (usedPlaces[j] == indexInJumbled)
+                {
                     alreadyInUse == true;
                 }
             }
-        }
-        while (alreadyInUse == true);
+        } while (alreadyInUse == true);
 
         jumbled[indexInJumbled] = baseWord.c_str()[i];
         usedPlaces[i] = indexInJumbled;
-        cout << "index " << i << ": " << baseWord.c_str()[i] <<endl;
-        cout << "destingation index: " << indexInJumbled <<endl;
+        cout << "index " << i << ": " << baseWord.c_str()[i] << endl;
+        cout << "destingation index: " << indexInJumbled << endl;
     }
 
     return jumbled;
 }
-
